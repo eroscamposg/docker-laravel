@@ -19,5 +19,11 @@ services:
       - ./env/mysql.env
   # Utilities
   composer:
+    build: 
+      context: ./dockerfiles
+      dockerfile: composer.dockerfile
+    volumes:
+      # Utility Container: Makes it so files being created by composer, inside the container, will be mirrored back on the src folder in the host machine
+      - ./src:/var/www/html
   artisan:
   npm:
